@@ -1,0 +1,29 @@
+:root {
+    --theme-background: rgb(0,0,0);
+    --theme-other: rgb(245, 121, 6);
+}
+
+#background-body {
+    height: 100vh;
+    height: 100dvh;
+    
+    width: 100vw;
+    
+    padding: 0;
+    margin: 0;
+}
+
+#background-body.dark {
+    background-color: var(--theme-background);
+}
+
+#background-body.light {
+    background-color: var(--theme-background);
+}
+
+#app-main {
+    width: 100%;
+    
+    min-height: 80vh;
+    min-height: 80dvh;
+}

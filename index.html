@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anime Watched</title>
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/header.css">
+    </head>
+    <body id="background-body">
+
+        <header id="header-site">
+            <h1 id="title-page"></h1>
+            <nav id="navigation-bar">
+                <ul>
+                    <li id="anime-page" class="selected">Anime</li>
+                    <li id="lista-utente-page" class="not-selected">Lista Personale</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="app-main"></main>
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('js/sw.js')
+                    .then(() => console.log('Service Worker registrato!'))
+                    .catch(err => console.error('Errore:', err));
+            }
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>
