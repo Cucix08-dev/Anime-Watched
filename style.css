@@ -3,11 +3,12 @@
     --theme-other: rgb(245, 121, 6);
 }
 
-#background-body {
+#background-body, html {
     height: 100vh;
     height: 100dvh;
-    
+
     width: 100vw;
+    overflow-x: hidden;
     
     padding: 0;
     margin: 0;
@@ -22,8 +23,19 @@
 }
 
 #app-main {
-    width: 100%;
+    width: 90%;
+
+    margin-top: 20vh;
+    margin-top: 20dvh;
+
+    padding: 0 5%;
     
     min-height: 80vh;
     min-height: 80dvh;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    justify-items: center;
+    gap: 20px;
 }

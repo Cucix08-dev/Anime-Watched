@@ -1,6 +1,8 @@
 #header-site {
-    position: absolute;
-
+    position: fixed;
+    z-index: 100;
+    
+    background-color: var(--theme-background);
     color: var(--theme-other);
     
     top: 0;

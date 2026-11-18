@@ -1,0 +1,13 @@
+.container, .container.anime>img {
+    aspect-ratio: 2/3;
+}
+
+.container.anime {
+    border: solid 1px var(--theme-other);
+    border-radius: 20px;
+    width: 80%;
+}
+
+.container.anime > h2 {
+    color: var(--theme-other) !important;
+}
