@@ -4,20 +4,44 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Anime Watched</title>
+        <link rel="shortcut icon" href="imgs/icon/icon.jpg" type="image/x-icon">
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="src/animePage.css">
-        <link rel="stylesheet" href="src/listaUtente.css">
+        <link rel="stylesheet" href="css/animePage.css">
     </head>
     <body id="background-body">
 
         <header id="header-site">
-            <h1 id="title-page"></h1>
+            <h1 id="title-page" style="display: flex; align-items: center;">
+                <img style="
+                    width: clamp(32px,8%,64px);
+                    aspect-ratio: 1/1;    
+                " src="imgs/icon/icon.jpg" alt="">
+                Anime Watched
+            </h1>
+            <input id="search-bar" name="search-bar" placeholder="Search an Anime" type="text">
             <nav id="navigation-bar">
                 <ul>
                     <li id="anime-page" class="selected">Anime</li>
                     <li id="lista-utente-page" class="not-selected">Lista Personale</li>
+                    <li id="download-btn">
+                        <svg 
+                            xmlns="http://w3.org" 
+                            width="24" 
+                            height="24" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="2" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -26,11 +50,12 @@
 
         <script>
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('js/sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then(() => console.log('Service Worker registrato!'))
                     .catch(err => console.error('Errore:', err));
             }
         </script>
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
+        <script src="js/download.js"></script>
     </body>
 </html>

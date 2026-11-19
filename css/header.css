@@ -9,7 +9,7 @@
     right: 0;
     left: 0;
 
-    width: 96%;
+    width: 100%;
 
     display: flex;
     align-items: center;
@@ -23,6 +23,23 @@
 #title-page {
     font-size: clamp(0.8rem, 4vw, 1.5rem);
     margin: 1% 0;
+    width: 18%;
+}
+
+#search-bar {
+    background: #000000;
+    border: solid 1px var(--theme-other);
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    width: 20%;
+    
+    transition: width 0.2s ease;
+}
+
+#search-bar:focus {
+    outline: solid 2px var(--theme-other);
+    width: 30%;
 }
 
 #navigation-bar ul{
