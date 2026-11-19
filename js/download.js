@@ -16,8 +16,8 @@ if (isAndroid && !window.matchMedia('(display-mode: standalone)').matches) {
 downloadBtn.addEventListener("click", async () => {
     if (isAndroid) {
         const link = document.createElement("a");
-        link.href = "./Anime Watched.apk";
-        link.download = "Anime Watched.apk";
+        link.href = "./AnimeWatched.apk";
+        link.download = "AnimeWatched.apk";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
