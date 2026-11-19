@@ -6,33 +6,41 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchAniList(query, variables) {
+async function fetchAniList(query, variables, retries = 3) {
     const now = Date.now();
     const elapsed = now - lastRequestTime;
-    if (elapsed < 700) {
-        await sleep(700 - elapsed);
+    
+    if (elapsed < 1500) {
+        await sleep(1500 - elapsed);
     }
     lastRequestTime = Date.now();
 
-    const response = await fetch("https://graphql.anilist.co", {
+    try {
+        const response = await fetch("https://graphql.anilist.co", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, variables })
-    });
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+            body: JSON.stringify({ query, variables })
+        });
 
-    if (response.status === 429) {
-        const retryAfter = parseInt(response.headers.get("Retry-After") || "30", 10);
-        await sleep(retryAfter * 1000);
-        return fetchAniList(query, variables);
-    }
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
 
-    if (!response.ok) {
-        console.error(`Errore API: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        if (retries > 0) {
+            console.warn("Possibile rate-limit (429) o errore di rete. Attendo 30s prima di riprovare...");
+            await sleep(30000);
+            return fetchAniList(query, variables, retries - 1);
+        }
+        console.error("Errore definitivo fetchAniList:", error);
         return null;
     }
-
-    return await response.json();
 }
+
 
 function cacheMediaTree(media) {
     if (!media || !media.id) return;
