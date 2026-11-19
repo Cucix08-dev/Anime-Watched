@@ -5,11 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Anime Watched</title>
         <link rel="shortcut icon" href="imgs/icon/icon.jpg" type="image/x-icon">
-        <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="./manifest.json">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/animePage.css">
     </head>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker registrato!'))
+                .catch(err => console.error('Errore:', err));
+        }
+    </script>
     <body id="background-body">
 
         <header id="header-site">
@@ -48,13 +55,6 @@
 
         <main id="app-main"></main>
 
-        <script>
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(() => console.log('Service Worker registrato!'))
-                    .catch(err => console.error('Errore:', err));
-            }
-        </script>
         <script type="module" src="script.js"></script>
         <script src="js/download.js"></script>
     </body>
